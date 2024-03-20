@@ -1,106 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Team A"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center_horizontal" />
-
-    <TextView
-        android:id="@+id/teamAScoreTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="16dp" />
+    <data>
+        <variable
+            name="viewModel"
+            type="gr.gkortsaridis.mobilecomputingdemolab07.MainViewModel"/>
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".MainActivity">
 
-        <Button
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="+1"/>
+            android:text="@{viewModel.teamName1}"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal" />
 
-        <Button
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/teamAScoreTextView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="+2"
-            android:layout_marginStart="16dp"/>
+            android:text="@{Integer.toString(viewModel.team1Score)}"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="16dp" />
 
-        <Button
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="+3"
-            android:layout_marginStart="16dp"/>
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+1"
+                android:onClick="@{() -> viewModel.increaseTeam1Score(1)}"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+2"
+                android:layout_marginStart="16dp"
+                android:onClick="@{() -> viewModel.increaseTeam1Score(2)}"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+3"
+                android:layout_marginStart="16dp"
+                android:onClick="@{() -> viewModel.increaseTeam1Score(3)}"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CCCCCC"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.teamName2}"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/teamBScoreTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(viewModel.team2Score)}"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="16dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+1"
+                android:onClick="@{() -> viewModel.increaseTeam2Score(1)}"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+2"
+                android:layout_marginStart="16dp"
+                android:onClick="@{() -> viewModel.increaseTeam2Score(2)}"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+3"
+                android:layout_marginStart="16dp"
+                android:onClick="@{() -> viewModel.increaseTeam2Score(3)}"/>
+
+        </LinearLayout>
 
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#CCCCCC"
-        android:layout_marginTop="16dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Team B"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="16dp" />
-
-    <TextView
-        android:id="@+id/teamBScoreTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="16dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="16dp">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+1"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+2"
-            android:layout_marginStart="16dp"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+3"
-            android:layout_marginStart="16dp"/>
-
-    </LinearLayout>
-
-</LinearLayout>
+</layout>
